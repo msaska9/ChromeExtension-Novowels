@@ -1,12 +1,17 @@
-var vowels="aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ";
-var colors=["yellow", "orange", "green", "red", "blue"];
-var	myNodelist = document.getElementsByTagName("p");
-for (var i = 0; i <	myNodelist.length; i++) {
-   	myNodelist[i].style.backgroundColor = colors[i%(colors.length)];
-	var newtext="";
-	var te=myNodelist[i].textContent;
-	for(var j=0; j<te.length; j++) {
-		if(!vowels.includes(te[j])) newtext+=te[j];
+var vowels = "aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ";
+var colors = ["yellow", "orange", "green", "red", "blue"];
+var	myNodeList = document.getElementsByTagName("p");
+for (var paragraphIndex = 0; paragraphIndex < myNodeList.length; paragraphIndex++) {
+    var myNode = myNodeList[paragraphIndex];
+   	myNode.style.backgroundColor = colors[paragraphIndex % (colors.length)];
+	var newText = "";
+	var originalText = myNode.textContent;
+	for(var letterIndex = 0; letterIndex < originalText.length; letterIndex++) {
+        var originalLetter = originalText[letterIndex];
+        var isVowel = vowels.includes(originalLetter);
+		if(!isVowel) {
+            newText += originalLetter;
+        }
 	}
-	myNodelist[i].textContent=newtext;
+	myNode.textContent = newText;
 }
